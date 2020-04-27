@@ -1,0 +1,494 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Gerador de BBCode TTZ v0.1</title>
+	<link rel="shortcut icon" href="img/fav_icon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<!-- Bulma Version 0.7.4-->
+	<link rel="stylesheet" href="css/bulma.min.css" />
+	<link rel="stylesheet" href="css/bulma-pageloader.min.css" />
+	<link rel="stylesheet" href="css/tooltipster.bundle.min.css" />
+	<link rel="stylesheet" href="css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/landing.css">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+</head>
+
+<body>
+	<section class="hero is-info is-fullheight">
+
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<div class="column is-6 is-offset-3">
+					<h1 class="title">
+						Gerador [BETA] de Tópicos para o TheToonZ
+					</h1>
+					<h2 class="subtitle">
+						Tem por objetivo facilitar a geração dos BBCodes no padrão atual do TheToonZ para os tópicos na area de Lançamentos.
+					</h2>
+					<div class="box">
+						<div class="field">
+							<div class="control is-expanded">
+								<div class="select is-fullwidth">
+									<select id="cmbTipoGerador">
+										<option selected disabled="disabled">Selecione</option>
+										<option value="1">Filmes (IMDb)</option>                                        
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box" id="divFilme" style="display:none">
+						<div class="field has-addons">
+							<div class="control is-expanded">
+								<div class=" is-fullwidth">
+									<div class="field">
+										    <div class="control">
+												<span class="tag is-success">IMDB Filme</span>
+											</div>
+											<input class="input is-primary" id="txtIMDbId" type="text"
+												placeholder="Exemplo: tt4154664">
+											<div class="control">
+												<span class="tag is-success">RIPADOR</span>
+											</div>
+											<input class="input is-primary" id="txtRipador" type="text"
+												placeholder="Nome do Ripador">
+											<div class="control">
+												<span class="tag is-success">REMASTERIZADOR</span>
+											</div>
+											<input class="input is-primary" id="txtRemasterizador" type="text"
+												placeholder="Nome do Remasterizador">
+												<div class="control">
+												<span class="tag is-success">COLABORADOR</span>
+											</div>
+											<input class="input is-primary" id="txtColaborador" type="text"
+												placeholder="Nome do Colaborador">
+											<div class="control">
+												<span class="tag is-success">UPLOADER</span>
+											</div>
+											<input class="input is-primary" id="txtUploader" type="text"
+												placeholder="Nome do Uploader">
+											<div class="control">
+												<span class="tag is-success">TAMANHO DO ARQUIVO</span>
+											</div>
+											<input class="input is-primary" id="txtTamanho" type="text"
+												placeholder="Exemplo: 10.42GB">
+											<div class="control">
+												<span class="tag is-success">RESOLUÇÃO DO ARQUIVO</span>
+											</div>
+											<input class="input is-primary" id="txtResolução" type="text"
+												placeholder="Exemplo: 1920 x 1080">
+											<div class="control">
+												<span class="tag is-success">SUBBER (OPCIONAL)</span>
+											</div>
+											<input class="input is-primary" id="txtSubber" type="text"
+												placeholder="Fonte da Subber (OPCIONAL)">
+											<div class="control">
+												<span class="tag is-success">TRAILER (OPCIONAL)</span>
+											</div>	
+											<input class="input is-primary" id="txtTrailerURL" type="text"
+												placeholder="Insira a Url do Trailer (OPCIONAL)">
+											<div class="control">
+												<span class="tag is-success">SERVIDOR</span>
+											</div>	
+												<div class="select is-primary is-fullwidth">
+												    <select id="txtServidor"> 
+												    	<option selected disabled="disabled">Selecione o Servidor</option>
+												    	<option value="googledrive">Google Drive</option>
+												    	<option value="onedrive">One Drive</option>
+												    	<option value="brfiles">BR Files</option>
+												    	<option value="mega">MEGA</option>
+												    	<option value="zippyshare">Zippyshare</option>
+												    	<option value="dropbox">Dropbox</option>
+												    </select>
+												</div>
+											<div class="control">
+												<span class="tag is-success">FORMATO DO ARQUIVO</span>
+											</div>	
+												<div class="select is-primary is-fullwidth">
+												    <select id="txtFormato">
+												    	<option selected disabled="disabled">Selecione o Formato</option>
+												    	<option value="AVI">AVI</option>
+												    	<option value="FLV">FLV</option>
+												    	<option value="MKV">MKV</option>
+												    	<option value="MP4">MP4</option>
+												    	<option value="M4V">M4V</option>
+												    	<option value="MPEG">MPEG</option>
+												    	<option value="ISO/BDISO/M2TS">ISO/BDISO/M2TS</option>
+												    	<option value="VOB">VOB</option>
+												    	<option value="DVD-R">DVD-R</option>
+												    	<option value="3GP">3GP</option>
+												    	<option value="RMVB">RMVB</option>
+												    	<option value="OUTRO">OUTROS</option>
+												    </select>
+												</div>
+												<div class="control">
+												    <span class="tag is-success">CODEC DE AUDIO</span>
+												</div>
+												<div class="select is-primary is-fullwidth">
+												    <select id="txtAudioInfo">
+												    	<option selected disabled="disabled">Selecione o Codec de Audio</option>
+												    	<option value="AAC 2.0">AAC 2.0</option>
+												    	<option value="AAC 5.1">AAC 5.1</option>
+												    	<option value="AAC 7.1">AAC 7.1</option>
+												    	<option value="AC3 2.0">AC3 2.0</option>
+												    	<option value="AC3 5.1">AC3 5.1</option>
+												    	<option value="DDP2.0">DDP2.0</option>
+												    	<option value="DDP5.1">DDP5.1</option>
+												    	<option value="DDP7.1">DDP7.1</option>
+												    	<option value="DDP51 (E-AC3)">DDP5.1 (E-AC3)</option>
+												    	<option value="Dolby Atmos">Dolby Atmos</option>
+												    	<option value="Dolby Digital 6.1">Dolby Digital 6.1</option>
+												    	<option value="Dolby TrueHD 2.0">Dolby TrueHD 2.0</option>
+												    	<option value="Dolby TrueHD 5.1">Dolby TrueHD 5.1</option>
+												    	<option value="Dolby TrueHD 7.1">Dolby TrueHD 7.1</option>
+												    	<option value="DTS 2.0">DTS 2.0</option>
+												    	<option value="DTS 5.1">DTS 5.1</option>
+												    	<option value="DTS 6.1">DTS 6.1</option>
+												    	<option value="DTS 7.1">DTS 7.1</option>
+												    	<option value="DTS-HD MA 2.0">DTS-HD MA 2.0</option>
+												    	<option value="DTS-HD MA 5.1">DTS-HD MA 5.1</option>
+												    	<option value="DTS-HD MA 6.1">DTS-HD MA 6.1</option>
+												    	<option value="DTS-HD MA 7.1">DTS-HD MA 7.1</option>
+												    	<option value="DTS:X">DTS:X</option>
+												    	<option value="FLAC 2.0">FLAC 2.0</option>
+												    	<option value="FLAC 5.1">FLAC 5.1</option>
+												    	<option value="LPCM 2.0">LPCM 2.0</option>
+												    	<option value="LPCM 5.1">LPCM 5.1</option>
+												    	<option value="MP3">MP3</option>
+												    	<option value="OGG">OGG</option>
+												    	<option value="WMA">WMA</option>
+												    	<option value="Outro">Outros</option>
+												    </select>
+												</div>
+												<div class="control">
+												    <span class="tag is-success">CODEC DE VIDEO</span>
+												</div>
+												<div class="select is-primary is-fullwidth">
+												    <select id="txtVideoInfo">
+												    	<option selected disabled="disabled">Selecione o Codec do Video</option>
+												    	<option value="XviD">XviD/DivX</option>
+												    	<option value="DAT">DAT</option>
+												    	<option value="H264">H264/x264</option>
+												    	<option value="H265">H265/x265</option>
+												    	<option value="MPEG">MPEG 1/2</option>
+												    	<option value="OGG">OGG</option>
+												    	<option value="RAM">RAM</option>
+												    	<option value="RMVB">RMVB (RV40)</option>
+												    	<option value="Outro">Outros</option>
+                                                </select>
+                                                </div>
+												<div class="control">
+												    <span class="tag is-success">IDIOMA</span>
+												</div>
+												<div class="select is-primary is-fullwidth">
+												    <select id="txtIdioma">
+												    	<option selected disabled="disabled">Selecione o Idioma</option>
+												    	<option value="Inglês">Inglês</option>
+												    	<option value="Português (Brasil)">Português (Brasil)</option>
+												    	<option value="Português (Portugal)">Português (Portugal)</option>
+												    	<option value="Espanhol">Espanhol</option>
+												    	<option value="Japonês">Japonês</option>
+												    	<option value="Mandarim">Mandarim</option>
+												    	<option value="Coreano">Coreano</option>
+												    	<option value="Tailandês">Tailandês</option>
+												    	<option value="Francês">Francês</option>
+												    	<option value="Russo">Russo</option>
+												    	<option value="Alemão">Alemão</option>
+												    	<option value="Outro">Outro</option>
+												    </select>
+												</div>
+												<div class="control">
+												    <span class="tag is-success">QUALIDADE</span>
+												</div>
+												<div class="select is-primary is-fullwidth">
+												    <select id="txtQualidade">
+												    	<option selected disabled="disabled">Selecione a Qualidade</option>
+												    	<option value="Blu Ray Remux 4K">Blu Ray Remux 4K</option>
+												    	<option value="Blu Ray Remux">Blu Ray Remux</option>
+												    	<option value="Blu Ray-Rip RMZ 4K">Blu Ray-Rip RMZ 4K</option>
+												    	<option value="Blu Ray-Rip 4K">Blu Ray-Rip 4K</option>
+												    	<option value="Blu Ray-Rip 1080">Blu Ray-Rip 1080</option>
+												    	<option value="Blu Ray-Rip RMZ 1080">Blu Ray-Rip RMZ 1080</option>
+												    	<option value="Blu Ray-Rip 720">Blu Ray-Rip 720</option>
+												    	<option value="Blu Ray-Rip RMZ 720">Blu Ray-Rip RMZ 720</option>
+												    	<option value="BRRip RMZ 1080">BRRip RMZ 1080</option>
+												    	<option value="BRRip RMZ 720">BRRip RMZ 720</option>
+												    	<option value="BRRip 720">BRRip 720</option>
+												    	<option value="BRRip 1080">BRRip 1080</option>
+												    	<option value="HDTV-Rip RMZ 1080">HDTV-Rip RMZ 1080</option>
+												    	<option value="HDTV-Rip RMZ 720">HDTV-Rip RMZ 720</option>
+												    	<option value="HDTV-Rip RMZ">HDTV-Rip RMZ</option>
+												    	<option value="HDTV-Rip 1080">HDTV-Rip 1080</option>
+												    	<option value="HDTV-Rip 720">HDTV-Rip 720</option>
+												    	<option value="HDTV-Rip">HDTV-Rip</option>
+												    	<option value="DVD Remux">DVD Remux</option>
+												    	<option value="DVD-Rip Upscale">DVD-Rip Upscale</option>
+												    	<option value="DVD-Rip RMZ">DVD-Rip RMZ</option>
+												    	<option value="DVD-Rip">DVD-Rip</option>
+												    	<option value="LD-Rip">LD-Rip</option>
+												    	<option value="SDTV-Rip">SDTV-Rip</option>
+												    	<option value="TV-Rip">TV-Rip</option>
+												    	<option value="TV-Rip RMZ">TV-Rip RMZ</option>
+												    	<option value="VHS-Rip">VHS-Rip</option>
+												    	<option value="WEB-DL 4K">WEB-DL 4K</option>
+												    	<option value="WEB-DL RMZ 4K">WEB-DL RMZ 4K</option>
+												    	<option value="WEB-DL 1080">WEB-DL 1080</option>
+												    	<option value="WEB-DL RMZ 1080">WEB-DL RMZ 1080</option>
+												    	<option value="WEB-DL RMZ 720">WEB-DL RMZ 720</option>
+												    	<option value="WEB-DL 720">WEB-DL 720</option>
+												    	<option value="WEB-DL RMZ">WEB-DL RMZ</option>
+												    	<option value="WEB-DL">WEB-DL</option>
+												    	<option value="WEB-Rip 4K">WEB-Rip 4K</option>
+												    	<option value="WEB-Rip 1080">WEB-Rip 1080</option>
+												    	<option value="WEB-Rip 720">WEB-Rip 720</option>
+												    	<option value="WEB-Rip">WEB-Rip</option>
+												    	<option value="Blu Ray 4K">Blu Ray 4K</option>
+												    	<option value="Blu Ray">Blu Ray</option>
+												    	<option value="Blu Ray BD25">Blu Ray BD25</option>
+												    	<option value="DVD-R 9">DVD-R 9</option>
+												    	<option value="DVD-R 9 RMZ">DVD-R 9 RMZ</option>
+												    	<option value="DVD-R">DVD-R</option>
+												    	<option value="DVD-R RMZ">DVD-R RMZ</option>
+                                                </select>
+                                                 </div>
+												<div class="control">
+												    <span class="tag is-success">IDIOMA DA LEGENDA</span>
+												</div>
+												    <div class="select is-primary is-fullwidth">
+												    <select id="txtLegenda">
+												    <option selected disabled="disabled">Selecione o Idioma da Legenda</option>
+												    	<option value="Inglês">Inglês</option>
+												    	<option value="Português (Brasil)">Português (Brasil)</option>
+												    	<option value="Português (Portugal)">Português (Portugal)</option>
+												    	<option value="Espanhol">Espanhol</option>
+												    	<option value="Japonês">Japonês</option>
+												    	<option value="Mandarim">Mandarim</option>
+												    	<option value="Coreano">Coreano</option>
+												    	<option value="Tailandês">Tailandês</option>
+												    	<option value="Francês">Francês</option>
+												    	<option value="Russo">Russo</option>
+												    	<option value="Alemão">Alemão</option>
+												    	<option value="N/A">N/A</option>
+                                                </select>
+                                                 </div>
+												<div class="control">
+												    <span class="tag is-success">SCREENSHOTS (OPCIONAL)</span>
+												</div>
+													<textarea class="textarea is-primary" id="txtScreenshot" placeholder="Insira as Screenshots (FIXAR DEPOIS)"></textarea>
+												<div class="control">
+												    <span class="tag is-success">MEDIAINFO (OPCIONAL)</span>
+												</div>
+													<textarea class="textarea is-primary" id="txtMediainfo" placeholder="Codigo Mediainfo (OPCIONAL)"></textarea>
+												<div class="control">
+												    <span class="tag is-success">AGRADECIMENTOS (OPCIONAL)</span>
+												</div>
+													<textarea class="textarea is-primary" id="txtAgradecimentos" placeholder="Agradeceço ao..(OPCIONAL)"></textarea>
+												</div>
+												<div class="control">
+												    <span class="tag is-success">OBSERVAÇÕES (OPCIONAL)</span>
+												</div>
+													<textarea class="textarea is-primary" id="txtObservacoes" placeholder="Observação sobre o projeto (OPCIONAL)"></textarea>
+												<div class="control">
+												    <span class="tag is-success">LINK DO ARQUIVO</span>
+												</div>
+													<textarea class="textarea is-primary" id="txtUrl" placeholder="Insira o link do Arquivo"></textarea>
+												</div>
+								</div>
+							</div>
+							<div class="control">
+								<button type="button" id="btnLoadImdb" class="button is-primary">Gerar e Copiar os BBCodes</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="box" id="divJogosSteam" style="display:none">
+						<div class="field has-addons">
+							<div class="control is-expanded">
+								<div class=" is-fullwidth">
+									<div class="field">
+										<div class="control">
+											<input class="input is-primary" id="txtSteamId" type="text"
+												placeholder="Exemplo: 730">
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="control">
+								<button type="button" id="btnLoadSteam" class="button is-primary">Escolher</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="box" id="divPlayStore" style="display:none">
+						<div class="field has-addons">
+							<div class="control is-expanded">
+								<div class=" is-fullwidth">
+									<div class="field">
+										<div class="control">
+											<input class="input is-primary" id="txtPlayStoreId" type="text"
+												placeholder="Exemplo: com.chucklefish.stardewvalley">
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="control">
+								<button type="button" id="btnLoadPlayStore" class="button is-primary">Escolher</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="box" id="divLastFM" style="display:none">
+						<div class="field has-addons">
+							<div class="control is-expanded">
+								<div class=" is-fullwidth">
+									<div class="field">
+										<div class="control">
+											<input class="input is-primary" id="txtLastFMUrl" type="text"
+												placeholder="Exemplo: https://www.last.fm/pt/music/Alan Walker/Different World">
+										</div>
+									</div>
+
+								</div>
+							</div>
+							<div class="control">
+								<button type="button" id="btnLoadLastFM" class="button is-primary">Escolher</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="box" id="divGenerico" style="display: none;">
+						<div class="field">
+							<div class="control is-expanded">
+								<div class="is-fullwidth">
+									<div class="field">
+										<div class="control">
+											<input class="input is-primary tooltip" id="txtGenericoTitulo" type="text"
+												title="Título do Post"
+												placeholder="Exemplo: Curso de Pilotagem do Barrichello">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control is-expanded">
+								<div class="is-fullwidth">
+									<div class="field">
+										<div class="control">
+											<input class="input is-primary" id="txtGenericoUrlCapa" type="text"
+												placeholder="Exemplo: www.imagem.com.br/capa.jpg">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control is-expanded">
+								<div class="is-fullwidth">
+									<div class="field">
+										<div class="control">
+											<textarea class="textarea" rows="6" id="txtGenericoDescricao" type="text"
+												placeholder="Exemplo: Curso para ensinar entusiastas do mundo automobilistico e blablablablablala"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="field has-addons inner-list" id="divInfoGenerico" data-repeater-list="inner-list">
+							<div class="control is-expanded">
+								<div class="is-fullwidth" data-repeater-item>
+									<div class="control">
+										<input class="input is-primary" name="txtGenericoInfo" type="text"
+											placeholder="Exemplo: Ano de Lançamento: 2015" />
+									</div>
+								</div>
+							</div>
+							<div class="control">
+									<input data-repeater-create type="button" value="Add" class="button is-secondary">
+							</div>
+						</div>
+						<div class="field has-addons">
+							<div class="control is-expanded">
+								<div class="is-fullwidth">
+									<div class="control">
+										<input class="input is-primary" name="txtGenericoUrlScreenshot" type="text"
+											placeholder="Exemplo: wwww.testeimagem.com.br/123.jpg">
+									</div>
+								</div>
+
+							</div>
+							<div class="control">
+								<button type="button" name="btnGenericoScreenshotAddInfo"
+									class="button is-secondary">+</button>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control is-expanded">
+								<div class="is-fullwidth">
+									<div class="field">
+										<div class="control">
+											<input class="input is-primary" id="txtGenericoUrlVideo" type="text"
+												placeholder="Exemplo: www.youtube.com.br/asdasqlwmelmla">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="control">
+							<button class="button is-primary" type="button" name="btnGenerar">Gerar</button>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<div id="pageLoader" class="pageloader"><span class="title">Carregando...</span></div>
+
+
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/bulma.js"></script>
+	<script type="text/javascript" src="js/bulma-toast.min.js"></script>
+	<script type="text/javascript" src="js/tooltipster.bundle.min.js"></script>
+	<script type="text/javascript" src="js/jquery.repeater.min.js"></script>
+
+	<script type="text/javascript" src="js/baseLib.js"></script>
+	<script type="text/javascript" src="js/geradorFilme.js"></script>
+	<script type="text/javascript" src="js/geradorJogosSteam.js"></script>
+	<script type="text/javascript" src="js/geradorAplicativoPlayStore.js"></script>
+	<script type="text/javascript" src="js/geradorAlbumLastFM.js"></script>
+	<script type="text/javascript" src="js/geradorGenerico.js"></script>
+	<script type="text/javascript" src="js/indexView.js"></script>
+	<script type="text/javascript">
+		$(window).on('load', function () {
+			console.log('All assets are loaded')
+
+			indexView.bindButtons();
+
+				$('.repeater').repeater({
+					// (Required if there is a nested repeater)
+					// Specify the configuration of the nested repeaters.
+					// Nested configuration follows the same format as the base configuration,
+					// supporting options "defaultValues", "show", "hide", etc.
+					// Nested repeaters additionally require a "selector" field.
+					repeaters: [{
+						// (Required)
+						// Specify the jQuery selector for this nested repeater
+						selector: '.inner-list'
+					}]
+				});
+
+		});
+
+	</script>
+</body>
+
+</html>
